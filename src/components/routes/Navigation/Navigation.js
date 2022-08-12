@@ -4,9 +4,10 @@ import './navigation.styles.scss';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 import { UserContext } from '../../../Context/userContext';
 import { signOutUser } from '../../../utils/firebase/firebase.utils';
+import CardIcon from '../../CardIcon/CardIcon';
+import CardDropdown from '../../Cart-dropdown/CardDropdown';
 function Navigation() {
   const { currentUser } = useContext(UserContext);
-
   return (
     <>
       <nav className="navigation">
@@ -26,6 +27,8 @@ function Navigation() {
               Sign-Out
             </Link>
           )}
+          <CardIcon />
+          <CardDropdown />
         </div>
       </nav>
       <Outlet />

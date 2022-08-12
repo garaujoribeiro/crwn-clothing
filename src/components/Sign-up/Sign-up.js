@@ -81,7 +81,7 @@ function SignUp() {
           value={confirmPassword}
           onChange={handleChange}
         />
-        <Button type="submit">Enviar</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </section>
   );

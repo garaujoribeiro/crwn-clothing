@@ -4,6 +4,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -32,7 +35,6 @@ const db = getFirestore();
 export const createUserDocumentAuth = async (userAuth, moreInfo) => {
   if (!userAuth) return;
   const usersDocRef = await doc(db, 'users', userAuth.uid);
-  console.log(usersDocRef);
   const userSnapshot = await getDoc(usersDocRef);
   if (!userSnapshot.exists()) {
     let { displayName, email } = userAuth;
@@ -51,3 +53,17 @@ export const createAuthWithEmailAndPassword = async (email, password) => {
   const authUser = await createUserWithEmailAndPassword(auth, email, password);
   return authUser;
 };
+
+export const signIn = async (email, password) => {
+  if (!(email && password)) return;
+  const userCredentials = await signInWithEmailAndPassword(
+    auth,
+    email,
+    password,
+  );
+};
+
+export const signOutUser = () => signOut(auth);
+
+export const onAuthStateListener = (callback) =>
+  onAuthStateChanged(auth, callback);

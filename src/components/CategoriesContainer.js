@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CategoriesCard from './CategoriesCard';
 import './CategoriesContainer.styles.scss';
 function CategoriesContainer() {

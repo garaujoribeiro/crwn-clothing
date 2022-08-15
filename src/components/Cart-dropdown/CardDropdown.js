@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../Context/cartContext';
 import Button from '../button/Button';
 import CartItem from '../cart-item/CartItem';
-import './cart-dropdown.styles.scss';
+import { CartDropdownContainer, CartItems } from './cart-dropdown.js';
 
 function CardDropdown() {
   const { toggle, cartItem, setToggle } = useContext(CartContext);
@@ -18,14 +18,16 @@ function CardDropdown() {
   return (
     <>
       {toggle && (
-        <div className="cart-dropdown-container">
-          <div className="cart-items">
+        <CartDropdownContainer>
+          <CartItems>
             {cartItem.map((item) => (
               <CartItem cartItem={item} key={item.id} />
             ))}
-          </div>
-          <Button onClick={goToCheckout}>CHECKOUT</Button>
-        </div>
+          </CartItems>
+          <Button style={{ marginTop: 'auto' }} onClick={goToCheckout}>
+            CHECKOUT
+          </Button>
+        </CartDropdownContainer>
       )}
     </>
   );

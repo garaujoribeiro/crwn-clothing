@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import './CategoriesCard.styles.scss';
 function CategoriesCard({ titulo, imageUrl }) {
   return (
@@ -10,8 +12,11 @@ function CategoriesCard({ titulo, imageUrl }) {
             backgroundImage: `url(${imageUrl})`,
           }}
         />
+
         <article className="category-body-container">
-          <h2>{titulo}</h2>
+          <Link to={`/shop/${titulo}`}>
+            <h2>{titulo}</h2>
+          </Link>
           <p>Shop Now</p>
         </article>
       </div>

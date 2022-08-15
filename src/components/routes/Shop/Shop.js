@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { productContext } from '../../../Context/productContext';
 import ProductCard from '../../productCard/productCard';
 import './shop.styles.scss';
@@ -7,11 +7,16 @@ function Shop() {
 
   return (
     <>
-      <div className="products-container" key={product.id}>
-        {product.map((product) => (
-          <ProductCard product={product} />
-        ))}
-      </div>
+      {Object.keys(product).map((title) => (
+        <Fragment key={product.id}>
+          <h2 style={{ textTransform: 'capitalize' }}>{title}</h2>
+          <div className="products-container">
+            {product[title].map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        </Fragment>
+      ))}
       ;
     </>
   );

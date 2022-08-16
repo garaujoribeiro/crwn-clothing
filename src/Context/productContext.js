@@ -1,16 +1,32 @@
-import { createContext, useState, useEffect } from 'react';
-// import SHOP_DATA from '../assets/shop-data.js';
-// import { addColectionAndDocument } from '../utils/firebase/firebase.utils.js';
+import { createContext, useState, useEffect, useReducer } from 'react';
 import { getCollectionAndDocuments } from '../utils/firebase/firebase.utils';
 export const productContext = createContext();
 
 const ProductProvider = ({ children }) => {
-  const [product, setProduct] = useState({});
-  const value = { product, setProduct };
 
-  // useEffect(() => {
-  //   addColectionAndDocument('categories', SHOP_DATA);
-  // }, []);
+  const INITIAL_PRODUCT = {};
+
+  const productReducer = (prevState, action) =>{
+    console.log(prevState, action)
+    const {type, payload} = action;
+    switch(type){
+      case 'CREATE_PRODUCT':
+        return {
+          ...prevState, product: payload
+        }
+      default: 
+        throw new Error('Unhandled type')
+    }
+  }
+
+  const [{product}, productDispatch] = useReducer(productReducer, INITIAL_PRODUCT)
+
+  const setProduct = (product) =>{
+    console.log(product)
+    productDispatch({type: 'CREATE_PRODUCT', payload: product})
+  }
+
+  const value = { product, setProduct };
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,11 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 import './CategoriesCard.styles.scss';
 function CategoriesCard({ titulo, imageUrl }) {
+
+    /**
+   * hook para criar um link para a rota do titulo da div
+   */
+
+     const navigateToTitle = useNavigate();
+
+     /*
+      * Função para manusear o click e utilizar o hook useNavigate no card
+      * params@route = rota a qual quero navegar (titulo)
+      */
+   
+     const handleClick = ()=>{
+       navigateToTitle(`/shop/${titulo}`)
+     }
+
   return (
     <>
-      <div className="category-container">
+      <div className="category-container" onClick={handleClick}>
         <div
           className="background-image"
           style={{
@@ -14,9 +29,7 @@ function CategoriesCard({ titulo, imageUrl }) {
         />
 
         <article className="category-body-container">
-          <Link to={`/shop/${titulo}`}>
-            <h2>{titulo}</h2>
-          </Link>
+          <h2>{titulo}</h2>
           <p>Shop Now</p>
         </article>
       </div>

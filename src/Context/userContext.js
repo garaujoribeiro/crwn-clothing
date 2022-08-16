@@ -1,10 +1,19 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useReducer } from 'react';
 import { onAuthStateListener } from '../utils/firebase/firebase.utils';
 
 export const UserContext = createContext({
   user: null,
   setUser: () => null,
 });
+
+/*
+const userReduzer = (state,action) =>{
+  return{
+    currentUser:
+
+  }
+}
+*/
 
 const UserProvider = ({ children }) => {
   useEffect(() => {
@@ -18,5 +27,6 @@ const UserProvider = ({ children }) => {
   const value = { currentUser, setCurrentUser };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
+
 
 export default UserProvider;

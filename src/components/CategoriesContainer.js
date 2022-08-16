@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CategoriesCard from './CategoriesCard';
 import './CategoriesContainer.styles.scss';
 function CategoriesContainer() {
@@ -30,6 +30,7 @@ function CategoriesContainer() {
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     },
   ];
+
 
   return (
     <section className="categories-container">

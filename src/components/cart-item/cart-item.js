@@ -7,7 +7,7 @@ export const CartItemContainer = styled.div`
   margin-bottom: 15px;
 `;
 
-export const CartImg = styled.div`
+export const CartImg = styled.img`
   width: 30%;
 `;
 
@@ -20,6 +20,6 @@ export const ItemDetails = styled.div`
   padding: 10px 20px;
 `;
 
-export const CartSpan = styled.div`
-  padding: 20px 40px;
+export const CartSpan = styled.span`
+  padding: 2px 4px;
 `;

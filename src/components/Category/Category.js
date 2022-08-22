@@ -7,6 +7,7 @@ import { CategoryComponentContainer, CategoryTitle } from './CategoryStyled';
 function Category() {
   const { category } = useParams();
   const { product } = useSelector((state) => state.product);
+
   const [productsArray, setProductsArray] = useState([]);
 
 

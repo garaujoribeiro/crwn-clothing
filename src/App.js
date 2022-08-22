@@ -24,14 +24,6 @@ function App() {
     return listener;
   }, [dispatch]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCollectionAndDocuments();
-      dispatch(setProduct(data));
-    };
-    fetchData();
-  }, []);
-
   return (
     <main>
       <Routes>

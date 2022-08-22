@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ProductProvider from './Context/productContext';
 import CartProvider from './Context/cartContext';
 import { store } from './store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,11 +12,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <ProductProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </ProductProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

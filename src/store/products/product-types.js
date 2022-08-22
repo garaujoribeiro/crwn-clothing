@@ -1,0 +1,3 @@
+export const PRODUCT_ACTION_TYPES = {
+    CREATE_PRODUCT: 'CREATE_PRODUCT'
+}

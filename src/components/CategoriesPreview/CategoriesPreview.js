@@ -1,9 +1,10 @@
 import React, { useContext, Fragment } from 'react';
-import { productContext } from '../../Context/productContext';
+import { useSelector } from 'react-redux';
 import CategoryPreview from '../categories-preview/CategoryPreview';
 import './shop.styles.scss';
 function CategoriesPreview() {
-  const { product } = useContext(productContext);
+
+  const { product } = useSelector((state) => state.product)
 
 
   return (

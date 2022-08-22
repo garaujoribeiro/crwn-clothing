@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { createUserDocumentAuth, onAuthStateListener } from './utils/firebase/firebase.utils';
+import { createUserDocumentAuth, getCollectionAndDocuments, onAuthStateListener } from './utils/firebase/firebase.utils';
 import Home from './components/routes/Home/Home';
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/routes/Navigation/Navigation';
@@ -8,6 +8,7 @@ import Auth from './components/routes/Auth/Auth';
 import Shop from './components/routes/Shop/Shop';
 import Checkout from './components/routes/Checkout/Checkout';
 import { setCurrentUser } from './store/user/user.action'
+import { setProduct } from './store/products/product-action';
 
 function App() {
 
@@ -22,6 +23,14 @@ function App() {
     });
     return listener;
   }, [dispatch]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCollectionAndDocuments();
+      dispatch(setProduct(data));
+    };
+    fetchData();
+  }, []);
 
   return (
     <main>

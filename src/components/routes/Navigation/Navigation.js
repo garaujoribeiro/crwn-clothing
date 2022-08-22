@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './navigation.styles.scss';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
-import { UserContext } from '../../../Context/userContext';
 import { signOutUser } from '../../../utils/firebase/firebase.utils';
 import CardIcon from '../../CardIcon/CardIcon';
 import CardDropdown from '../../Cart-dropdown/CardDropdown';
+import { useSelector } from 'react-redux'
+
 function Navigation() {
-  const { currentUser } = useContext(UserContext);
+
+  const currentUser = useSelector((state) => state.user.currentUser)
+
   return (
     <>
       <nav className="navigation">

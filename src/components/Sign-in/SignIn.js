@@ -7,7 +7,7 @@ import './sign-in.styles.scss';
 import FormInput from '../form-input/form-input';
 import Button from '../button/Button';
 import { signIn } from '../../utils/firebase/firebase.utils';
-import { UserContext } from '../../Context/userContext';
+import { useSelector } from 'react-redux';
 const defaultFormField = {
   email: '',
   password: '',
@@ -18,7 +18,7 @@ function SignIn() {
 
   const { email, password } = formFields;
 
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector((state) => state.user.currentUser)
 
   console.log(currentUser);
 

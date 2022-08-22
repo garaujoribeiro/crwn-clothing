@@ -1,11 +1,28 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { createUserDocumentAuth, onAuthStateListener } from './utils/firebase/firebase.utils';
 import Home from './components/routes/Home/Home';
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/routes/Navigation/Navigation';
 import Auth from './components/routes/Auth/Auth';
 import Shop from './components/routes/Shop/Shop';
 import Checkout from './components/routes/Checkout/Checkout';
+import { setCurrentUser } from './store/user/user.action'
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const listener = onAuthStateListener((user) => {
+      if (user) {
+        createUserDocumentAuth(user)
+      }
+      dispatch(setCurrentUser(user));
+    });
+    return listener;
+  }, [dispatch]);
+
   return (
     <main>
       <Routes>
